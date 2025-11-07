@@ -28,8 +28,8 @@ import { cn } from "@/lib/utils";
 import { authClient } from "@/lib/auth-client";
 
 const loginSchema = z.object({
-  email: z.email("Invalid email address"),
-  password: z.string().min(1, "Password must be at least 6 characters"),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 type LoginFormValues = z.infer<typeof loginSchema>;
