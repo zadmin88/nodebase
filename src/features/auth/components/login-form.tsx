@@ -85,6 +85,13 @@ export function LoginForm() {
                     type="button"
                     disabled={isPending}
                   >
+                    <Image
+                      src="/logos/github.svg"
+                      alt="GitHub Logo"
+                      width={20}
+                      height={20}
+                      className="mr-2 inline"
+                    />
                     Continue with Github
                   </Button>
                   <Button
@@ -93,6 +100,13 @@ export function LoginForm() {
                     type="button"
                     disabled={isPending}
                   >
+                    <Image
+                      src="/logos/google.svg"
+                      alt="google Logo"
+                      width={20}
+                      height={20}
+                      className="mr-2 inline"
+                    />
                     Continue with Google
                   </Button>
                   <div className="grid gap-6">
