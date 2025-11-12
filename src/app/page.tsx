@@ -20,24 +20,37 @@
 // };
 
 // export default Page;
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { authClient } from "@/lib/auth-client";
-import { requireAuth } from "@/lib/auth-utils";
-import { caller } from "@/trpc/server";
+import { useTRPC } from "@/trpc/client";
 
-const Page = async () => {
+import { useMutation } from "@tanstack/react-query";
+
+const Page = () => {
   // const { data } = authClient.useSession();
 
-  await requireAuth();
+  // await requireAuth();
 
-  const data = await caller.getUsers();
+  const trpc = useTRPC();
+  const testAi = useMutation(trpc.testAI.mutationOptions());
+
+  // const data = await caller.getUsers();
   return (
     <div className="min-h-screen min-w-screen flex items-center justify-center">
       {/* {JSON.stringify(data)}
       {data && <Button onClick={() => authClient.signOut()}>Logout</Button>} */}
       protected route
-      {JSON.stringify(data)}
+      <Button
+        disabled={testAi.isPending}
+        onClick={() => {
+          testAi.mutate();
+        }}
+      >
+        Test AI
+      </Button>
+      {testAi.data && JSON.stringify(testAi.data)}
     </div>
   );
 };
