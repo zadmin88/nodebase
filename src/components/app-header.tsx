@@ -1,4 +1,4 @@
-import { SidebarTrigger } from "./sidebar";
+import { SidebarTrigger } from "./ui/sidebar";
 
 export const AppHeader = () => {
   return (
